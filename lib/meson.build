@@ -114,6 +114,7 @@ lib_sources = [
 	'igt_panfrost.c',
 	'igt_panthor.c',
 	'igt_pvr.c',
+	'igt_sgxfive.c',
 	'igt_v3d.c',
 	'igt_vc4.c',
 	'igt_vmwgfx.c',

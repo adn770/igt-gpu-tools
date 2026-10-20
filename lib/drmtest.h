@@ -60,6 +60,7 @@ int __get_drm_device_name(int fd, char *name, int name_size);
 #define DRIVER_PANTHOR	(1 << 11)
 #define DRIVER_ASAHI	(1 << 12)
 #define DRIVER_POWERVR	(1 << 13)
+#define DRIVER_SGXFIVE	(1 << 14)
 
 /*
  * Exclude DRIVER_VGEM and DRIVER_VIRTIO from DRIVER_ANY since if you run
