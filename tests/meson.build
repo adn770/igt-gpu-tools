@@ -569,3 +569,4 @@ endif
 subdir('intel-ci')
 
 subdir('imagination')
+subdir('sgxfive')
