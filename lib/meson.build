@@ -117,6 +117,7 @@ lib_sources = [
 	'igt_sgxfive.c',
 	'sgxfive/dev.c',
 	'sgxfive/prog_asm.c',
+	'sgxfive/render.c',
 	'sgxfive/xfer.c',
 	'sgxfive/xfer_job.c',
 	'igt_v3d.c',
