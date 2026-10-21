@@ -80,7 +80,8 @@ static struct rside rside_init(struct gpu *g, struct sgxfive_vm *vm)
 		igt_assert_eq(sgxfive_vm_create(g->dev, &s.vm), 0);
 		s.own_vm = true;
 	}
-	igt_assert_eq(sgxfive_ctx_create_type(s.vm, DRM_SGXFIVE_CTX_TYPE_RENDER, &s.ctx), 0);
+	igt_assert_eq(sgxfive_render_ctx_create(s.vm, SGXFIVE_TRI_MAX_W, SGXFIVE_TRI_MAX_H,
+					      &s.ctx), 0);
 	igt_assert_eq(sgxfive_render_create(s.vm, s.ctx, &s.r), 0);
 	return s;
 }
@@ -247,6 +248,7 @@ int igt_main()
 		uint32_t vm = igt_sgxfive_create_vm(g.fd), ctx[32], extra;
 		struct drm_sgxfive_create_context_args a = {
 			.type = DRM_SGXFIVE_CTX_TYPE_RENDER, .vm_context_handle = vm,
+			.max_width = 64, .max_height = 64,
 		};
 
 		for (int i = 0; i < 32; i++) {
@@ -588,8 +590,7 @@ int igt_main()
 			igt_assert_eq(sgxfive_submit_render(g.dev, s.ctx,
 							    sgxfive_render_last_cmd(s.r), 0, 0),
 				      0);
-			igt_assert_eq(sgxfive_ctx_create_type(s.vm, DRM_SGXFIVE_CTX_TYPE_RENDER,
-							      &ctx2), 0);
+			igt_assert_eq(sgxfive_render_ctx_create(s.vm, 64, 64, &ctx2), 0);
 			sgxfive_ctx_destroy(g.dev, s.ctx);	/* two jobs queued */
 			s.ctx = ctx2;
 			sgxfive_render_wait(s.r, WAIT_NS);

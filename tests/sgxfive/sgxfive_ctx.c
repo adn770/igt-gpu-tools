@@ -70,7 +70,7 @@ int igt_main()
 
 	igt_subtest("bad-padding") {
 		args = valid(vm);
-		args._padding_14 = 1;
+		args._padding_1c = 1;
 		igt_assert_eq(__igt_sgxfive_create_ctx(fd, &args), -EINVAL);
 	}
 
